@@ -7,6 +7,6 @@ function albumController ($scope){
 	}*/
 }
 
-function addToContainer(){
-	
+function addToContainer(ele){
+	document.getElementById('selectedImage').src = ele.src;
 }
