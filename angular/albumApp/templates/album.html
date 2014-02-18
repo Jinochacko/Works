@@ -1,0 +1,20 @@
+<doctype html>
+<html ng-app>
+<head>
+<script type="text/javascript" src="../../js/angular.min.js"></script>
+<script type="text/javascript" src="../scripts/album.js"></script>
+<link rel="stylesheet" href="../css/album.css"></link>
+</head>
+<body>
+<div id="albumContainer" ng-controller="albumController">
+<div id="previewContainer">
+<img src="../images/Mia George(5).jpg"  id="selectedImage">
+</div>
+<ul>
+<li ng-repeat="image in images">
+<img ng-src="{{image.src}}" onclick="addToContainer(this)">
+</li>
+</ul>
+</div>
+</body>
+</html>
