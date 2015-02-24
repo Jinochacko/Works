@@ -1,18 +1,27 @@
 <doctype html>
 <html ng-app>
 <head>
-<script type="text/javascript" src="../../js/angular.min.js"></script>
+<script src="http://code.angularjs.org/1.2.9/angular.min.js" type="text/javascript"></script>
+<script src="http://code.angularjs.org/1.2.9/angular-animate.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="../scripts/album.js"></script>
 <link rel="stylesheet" href="../css/album.css"></link>
 </head>
 <body>
-<div id="albumContainer" ng-controller="albumController">
-<div id="previewContainer">
-<img src="../images/Mia George(5).jpg"  id="selectedImage">
+<div id="albumContainer" data-ng-controller="albumController">
+<div id="previewContainer" data-ng-model="previewId">
+<img data-ng-src="{{previewId}}" class="previewimg" ng-animate="'animate'">
+<select data-ng-model="sort" data-ng-change="reloadImages(sort)">
+<option value="">All</option>
+<option value="mia">Mia George</option>
+<option value="nazriya">Nazriya</option>
+<option value="bhavana">Bhavana</option>
+</select>
+<img class="control left" data-ng-model="prevImg" data-ng-src="../images/Left.png" data-ng-click="prevImage(prevImg)">
+<img class="control" data-ng-model="nextImg" data-ng-src="../images/Right.png" data-ng-click="nextImage(nextImg)">
 </div>
 <ul>
-<li ng-repeat="image in images">
-<img ng-src="{{image.src}}" onclick="addToContainer(this)">
+<li data-ng-repeat="image in images | filter:sort">
+<img data-ng-src="{{image.src}}" class="{{image.id}}" data-ng-click="addToContainer(image)">
 </li>
 </ul>
 </div>
